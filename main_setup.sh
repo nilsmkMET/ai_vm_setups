@@ -151,6 +151,17 @@ echo "--- done setup_nvm_npm ---"
 echo ""
 echo ""
 
+echo "--- start setup_antigravity ---"
+date
+source "$HOME/.bashrc"
+cd ./setup_antigravity
+bash setup_antigravity.sh
+cd "$HOME/Desktop/Git/setups"
+history -s "agy"
+echo "--- done setup_antigravity ---"
+echo ""
+echo ""
+
 echo "--- start setup_bash ---"
 date
 source "$HOME/.bashrc"
