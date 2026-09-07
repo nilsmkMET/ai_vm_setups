@@ -1,14 +1,14 @@
-# Setups
+# AI VM Setups
 
-My standard setups on my machine. Typically used on fresh Ubuntu installs. Assumes that it will be run non-interactive, with an empty sudo password, at the early stage of machine setup.
+My standard setups on my machine for AI VMs (fork of [jerabaul29/setups](https://github.com/jerabaul29/setups)). Typically used on fresh Ubuntu installs. Assumes that it will be run non-interactive, with an empty sudo password, at the early stage of machine setup.
 
-The main work script `main_setup.sh` assumes that this repository is cloned in `$HOME/Desktop/Git/setups`, for example clone and install as:
+The main work script `main_setup.sh` assumes that this repository is cloned in `$HOME/Desktop/Git/ai_vm_setups` (or `$HOME/Desktop/Git/setups`), for example clone and install as:
 
 ```bash
 mkdir -p "$HOME/Desktop/Git"
 cd "$HOME/Desktop/Git"
-git clone https://github.com/jerabaul29/setups.git
-cd setups
+git clone https://github.com/nilsmkMET/ai_vm_setups.git
+cd ai_vm_setups
 bash main_setup.sh
 ```
 

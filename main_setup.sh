@@ -68,11 +68,20 @@ shopt -s nullglob
 ###############################################################################
 
 # ----------------------------------------
-# guard against re-running the setup on a machine where it has already been run
-SETUP_MARKER_FILE="$HOME/.setup_jerabaul29_is_run"
+# determine repository root directory
+if [ -d "$HOME/Desktop/Git/ai_vm_setups" ]; then
+    REPO_DIR="$HOME/Desktop/Git/ai_vm_setups"
+elif [ -d "$HOME/Desktop/Git/setups" ]; then
+    REPO_DIR="$HOME/Desktop/Git/setups"
+else
+    REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
 
-if [ -f "$SETUP_MARKER_FILE" ]; then
-    echo "ERROR: ${SETUP_MARKER_FILE} already exists; this setup has already been run on this machine. Aborting." >&2
+# guard against re-running the setup on a machine where it has already been run
+SETUP_MARKER_FILE="$HOME/.setup_ai_vm_setups_is_run"
+
+if [ -f "$SETUP_MARKER_FILE" ] || [ -f "$HOME/.setup_jerabaul29_is_run" ]; then
+    echo "ERROR: setup marker already exists; this setup has already been run on this machine. Aborting." >&2
     exit 1
 fi
 
@@ -87,7 +96,7 @@ date
 source "$HOME/.bashrc"
 cd ./setup_standard_libraries
 bash setup_standard_libraries.sh
-cd "$HOME/Desktop/Git/setups"
+cd "$REPO_DIR"
 echo "--- done setup_standard_libraries ---"
 echo ""
 echo ""
@@ -97,7 +106,7 @@ date
 source "$HOME/.bashrc"
 cd ./setup_command_line
 bash setup_command_line.sh
-cd "$HOME/Desktop/Git/setups"
+cd "$REPO_DIR"
 echo "--- done setup_command_line ---"
 echo ""
 echo ""
@@ -107,7 +116,7 @@ date
 source "$HOME/.bashrc"
 cd ./setup_tmux
 bash setup_tmux.sh
-cd "$HOME/Desktop/Git/setups"
+cd "$REPO_DIR"
 echo "--- done setup_tmux ---"
 echo ""
 echo ""
@@ -117,7 +126,7 @@ date
 source "$HOME/.bashrc"
 cd ./setup_rust
 bash setup_rust.sh
-cd "$HOME/Desktop/Git/setups"
+cd "$REPO_DIR"
 echo "--- done setup_rust ---"
 echo ""
 echo ""
@@ -127,7 +136,7 @@ date
 source "$HOME/.bashrc"
 cd ./setup_helix
 bash setup_helix.sh
-cd "$HOME/Desktop/Git/setups"
+cd "$REPO_DIR"
 echo "--- done setup_helix ---"
 echo ""
 echo ""
@@ -137,7 +146,7 @@ date
 source "$HOME/.bashrc"
 cd ./setup_nvm_npm
 bash setup_nvm_npm.sh
-cd "$HOME/Desktop/Git/setups"
+cd "$REPO_DIR"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 npm install -g @github/copilot
@@ -156,7 +165,7 @@ date
 source "$HOME/.bashrc"
 cd ./setup_antigravity
 bash setup_antigravity.sh
-cd "$HOME/Desktop/Git/setups"
+cd "$REPO_DIR"
 history -s "agy"
 echo "--- done setup_antigravity ---"
 echo ""
@@ -167,7 +176,7 @@ date
 source "$HOME/.bashrc"
 cd ./setup_bash
 bash setup_bash.sh
-cd "$HOME/Desktop/Git/setups"
+cd "$REPO_DIR"
 history -s "eval \"$(ssh-agent -s)\""
 echo "--- done setup_bash ---"
 echo ""
@@ -178,7 +187,7 @@ date
 source "$HOME/.bashrc"
 cd ./setup_python
 bash python_dev_setup.sh
-cd "$HOME/Desktop/Git/setups"
+cd "$REPO_DIR"
 echo "--- done setup_python ---"
 echo ""
 echo ""
@@ -188,7 +197,7 @@ date
 source "$HOME/.bashrc"
 cd ./setup_latex
 bash setup_latex.sh
-cd "$HOME/Desktop/Git/setups"
+cd "$REPO_DIR"
 echo "--- done setup_latex ---"
 echo ""
 echo ""

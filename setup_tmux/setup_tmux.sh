@@ -12,4 +12,12 @@ fi
 cd "$HOME"
 git clone --single-branch https://github.com/gpakosz/.tmux.git
 ln -s -f .tmux/.tmux.conf
-cp "$HOME"/Desktop/Git/setups/setup_tmux/tmux.conf.local .tmux.conf.local
+if [ -f "$HOME/Desktop/Git/ai_vm_setups/setup_tmux/tmux.conf.local" ]; then
+  cp "$HOME/Desktop/Git/ai_vm_setups/setup_tmux/tmux.conf.local" .tmux.conf.local
+elif [ -f "$HOME/Desktop/Git/setups/setup_tmux/tmux.conf.local" ]; then
+  cp "$HOME/Desktop/Git/setups/setup_tmux/tmux.conf.local" .tmux.conf.local
+else
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  cp "$SCRIPT_DIR/tmux.conf.local" .tmux.conf.local
+fi
+
