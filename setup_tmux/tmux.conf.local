@@ -248,8 +248,8 @@ tmux_conf_copy_to_os_clipboard=false
 # increase history size
 #set -g history-limit 10000
 
-# start with mouse mode enabled
-set -g mouse on
+# Disable tmux mouse capture so the native terminal handles selection & clipboard
+set -g mouse off
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual

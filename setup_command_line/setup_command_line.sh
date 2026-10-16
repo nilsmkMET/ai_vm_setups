@@ -1,78 +1,33 @@
 #!/bin/bash -i
 
-# setup https://github.com/magicmonty/bash-git-prompt
-git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+# Only install standard, useful command line tools
+sudo apt update
+sudo apt install -y tree
 
-cat << EOF >> "$HOME/.bashrc"
-
-# set up truecolor, needed for example for helix
-export COLORTERM="truecolor"
-
-# set up gitprompt
-if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
-    GIT_PROMPT_ONLY_IN_REPO=0
-    GIT_PROMPT_THEME=Single_line_Dark  # this one is nice
-    source $HOME/.bash-git-prompt/gitprompt.sh
-fi
-
-EOF
-
-# setup z
-git clone https://github.com/rupa/z.git ~/z --depth=1
-cat << EOF >> "$HOME/.bashrc"
-
-. "$HOME/z/z.sh"
-
-EOF
-
-# setup my scripts
-mkdir "$HOME/my_scripts"
+# Setup my scripts directory for sync and git helpers
+mkdir -p "$HOME/my_scripts"
 cd "$HOME/my_scripts"
 
-# hg/hx
-wget https://raw.githubusercontent.com/jerabaul29/config_scripts_snippets/refs/heads/main/scripts/hist_grep_exec/histg.sh
-wget https://raw.githubusercontent.com/jerabaul29/config_scripts_snippets/refs/heads/main/scripts/hist_grep_exec/histx.sh
-
-# zh/zx
-wget https://raw.githubusercontent.com/jerabaul29/config_scripts_snippets/refs/heads/main/scripts/z_grep_exec/zg.sh
-wget https://raw.githubusercontent.com/jerabaul29/config_scripts_snippets/refs/heads/main/scripts/z_grep_exec/zx.sh
-
-# ga
-wget https://raw.githubusercontent.com/jerabaul29/config_scripts_snippets/refs/heads/main/scripts/ga/git_add_commit_push.sh
-chmod +x git_add_commit_push.sh
-
-# grf and grt
-wget https://raw.githubusercontent.com/jerabaul29/config_scripts_snippets/refs/heads/main/scripts/sync_with_IP/sync_with_IP.sh
+# grf and grt (IP sync helpers)
+wget -q https://raw.githubusercontent.com/jerabaul29/config_scripts_snippets/refs/heads/main/scripts/sync_with_IP/sync_with_IP.sh
 chmod +x sync_with_IP.sh
 
-# ct
-wget https://raw.githubusercontent.com/jerabaul29/config_scripts_snippets/refs/heads/main/scripts/tmux_and_ai_cli/tmux_and_ai_cli.sh
-chmod +x tmux_and_ai_cli.sh
+# ga (git add commit push helper)
+wget -q https://raw.githubusercontent.com/jerabaul29/config_scripts_snippets/refs/heads/main/scripts/ga/git_add_commit_push.sh
+chmod +x git_add_commit_push.sh
 
-# add all aliases
-cat << EOF >> "$HOME/.bashrc"
+# Clean, standard terminal configuration
+cat << 'EOF' >> "$HOME/.bashrc"
 
-source "$HOME/my_scripts/zg.sh"
-source "$HOME/my_scripts/zx.sh"
+# Enable truecolor support for modern editors
+export COLORTERM="truecolor"
 
-source "$HOME/my_scripts/histg.sh"
-source "$HOME/my_scripts/histx.sh"
+# Keep the standard, clean Ubuntu bash prompt
+PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
+# Sync and git helper commands
 source "$HOME/my_scripts/sync_with_IP.sh"
-
 alias ga="$HOME/my_scripts/git_add_commit_push.sh"
-
-alias ct="$HOME/my_scripts/tmux_and_ai_cli.sh"
-
-EOF
-
-# set up tools I like and use
-sudo apt install tree -y
-sudo apt install fzf -y 
-
-cat << EOF >> "$HOME/.bashrc"
-
-source /usr/share/doc/fzf/examples/key-bindings.bash
 
 EOF
 

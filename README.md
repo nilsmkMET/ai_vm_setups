@@ -17,8 +17,8 @@ The helper `main.sh` script should work from any location and calls `main_setup.
 ## Components Installed and Configured
 
 - **Standard Libraries**: Build essentials (`build-essential`, `libc6-dev`, runtime/development libraries, `lld`, `netcdf-bin`).
-- **Command Line Tools**: `bash-git-prompt`, `z` directory jumping, `tree`, `fzf`, and custom productivity scripts (`zg`, `zx`, `histg`, `histx`, `sync_with_IP`, `ga`, `ct`).
-- **Tmux**: Terminal multiplexer configuration based on `gpakosz/.tmux` (mouse scrolling enabled by default).
+- **Command Line Tools**: Clean standard Ubuntu prompt, `tree`, and custom productivity scripts (`sync_with_IP`, `ga`).
+- **Tmux**: Terminal multiplexer configuration based on `gpakosz/.tmux` (mouse mode disabled by default for native terminal selection and copy/paste).
 - **Rust**: Latest Rust toolchain via `rustup`.
 - **Helix**: AppImage installation, custom languages config, snippets, and LSPs (`codebook-lsp`, `hx-lsp`).
 - **Node & AI CLIs**: Node.js via `nvm`, plus global AI assistant CLIs:
