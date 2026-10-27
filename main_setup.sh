@@ -171,6 +171,17 @@ echo "--- done setup_antigravity ---"
 echo ""
 echo ""
 
+echo "--- start setup_opencode ---"
+date
+source "$HOME/.bashrc"
+cd ./setup_opencode
+bash setup_opencode.sh
+cd "$REPO_DIR"
+history -s "opencode"
+echo "--- done setup_opencode ---"
+echo ""
+echo ""
+
 echo "--- start setup_bash ---"
 date
 source "$HOME/.bashrc"
