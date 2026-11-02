@@ -25,7 +25,7 @@ The helper `main.sh` script should work from any location and calls `main_setup.
   - GitHub Copilot (`@github/copilot`)
   - Claude Code (`@anthropic-ai/claude-code`)
   - OpenAI Codex (`@openai/codex`)
-- **Antigravity CLI**: Google Antigravity CLI (`agy`) via `curl -fsSL https://antigravity.google/cli/install.sh | bash`, configured with `~/.local/bin` in PATH.
+- **Antigravity CLI**: Google Antigravity CLI (`agy`) via `curl -fsSL https://antigravity.google/cli/install.sh | bash`, configured with `~/.local/bin` in PATH and `agyolo` alias (`agy --dangerously-skip-permissions`).
 - **OpenCode**: OpenCode AI coding agent via `curl -fsSL https://opencode.ai/install | bash` (binary in `~/.opencode/bin`, added to PATH by the installer).
 - **Bash Tools**: `bash-language-server` and `shellcheck`.
 - **Python**: Miniforge3/mamba with a `dev` environment containing scientific packages (`numpy`, `scipy`, `pandas`, `polars`, `matplotlib`, `xarray`, etc.) and language servers (`python-lsp-server`, `jedi-language-server`, `python-lsp-ruff`, `ty`).

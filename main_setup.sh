@@ -167,6 +167,7 @@ cd ./setup_antigravity
 bash setup_antigravity.sh
 cd "$REPO_DIR"
 history -s "agy"
+history -s "agyolo"
 echo "--- done setup_antigravity ---"
 echo ""
 echo ""

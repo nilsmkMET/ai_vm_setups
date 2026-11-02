@@ -18,3 +18,15 @@ fi
 if [ -d "$HOME/.local/bin" ] && [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
+
+# Add agyolo alias for executing antigravity cli with permissions skipped
+if ! grep -q 'alias agyolo=' "$HOME/.bashrc" 2>/dev/null; then
+cat << 'EOF' >> "$HOME/.bashrc"
+
+# alias for executing antigravity cli with permissions skipped
+alias agyolo="agy --dangerously-skip-permissions"
+
+EOF
+fi
+
+alias agyolo="agy --dangerously-skip-permissions"
