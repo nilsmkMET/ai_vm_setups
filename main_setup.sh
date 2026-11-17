@@ -183,6 +183,17 @@ echo "--- done setup_opencode ---"
 echo ""
 echo ""
 
+echo "--- start setup_pi ---"
+date
+source "$HOME/.bashrc"
+cd ./setup_pi
+bash setup_pi.sh
+cd "$REPO_DIR"
+history -s "pi"
+echo "--- done setup_pi ---"
+echo ""
+echo ""
+
 echo "--- start setup_bash ---"
 date
 source "$HOME/.bashrc"
