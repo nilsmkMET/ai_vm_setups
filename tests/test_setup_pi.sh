@@ -29,6 +29,9 @@ case "$2" in
         printf '# Global guidelines\n' > "$3/AGENTS.md"
         ;;
     git@github.com:nilsmkMET/skillcollection.git)
+        exit 1
+        ;;
+    https://github.com/nilsmkMET/skillcollection.git)
         [ "$3" = "$HOME/git/skillcollection" ]
         mkdir -p "$3"
         ;;
@@ -61,7 +64,7 @@ for repo in agent_guidelines skillcollection; do
     if [ "$repo" = agent_guidelines ]; then
         export FAIL_CLONE="https://github.com/nilsmkMET/agent_guidelines.git"
     else
-        export FAIL_CLONE="git@github.com:nilsmkMET/skillcollection.git"
+        export FAIL_CLONE="https://github.com/nilsmkMET/skillcollection.git"
     fi
     if bash "$REPO_DIR/setup_pi/setup_pi.sh"; then
         echo "ERROR: setup unexpectedly succeeded after $repo clone failure" >&2

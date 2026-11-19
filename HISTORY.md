@@ -1,5 +1,17 @@
 # History
 
+## 2026-11-19 — HTTPS skillcollection clone and shared agent configuration
+
+Request: “change the url for skillcollection to https://github.com/nilsmkMET/skillcollection.git, also make sure that these skills and agents.md-files are available to both pi, opencode, copilot and agy”.
+
+Switched `skillcollection` cloning from SSH to `https://github.com/nilsmkMET/skillcollection.git` and ensured both `agent_guidelines` (`~/git/agent_guidelines`) and `skillcollection` (`~/git/skillcollection`) are cloned idempotently and configured across all four agents:
+- **Pi** (`setup_pi/setup_pi.sh`): `~/.pi/agent/AGENTS.md` symlink and `skills` in `~/.pi/agent/settings.json`.
+- **OpenCode** (`setup_opencode/setup_opencode.sh`): `~/.config/opencode/AGENTS.md` symlink and `~/.config/opencode/skills` symlink.
+- **Antigravity (`agy`)** (`setup_antigravity/setup_antigravity.sh`): `~/.gemini/AGENTS.md` symlink and `~/.gemini/skills` symlink.
+- **Copilot CLI** (`setup_copilot/setup_copilot.sh`, invoked from `main_setup.sh`): `~/.copilot/copilot-instructions.md` symlink and `skillDirectories` in `~/.copilot/settings.json`.
+
+Updated `README.md`, updated `tests/test_setup_pi.sh` for the HTTPS URL, and added `tests/test_agent_setups.sh` to verify all four agents end-to-end with mocked `git`/`curl`/CLI binaries.
+
 ## 2026-11-17 — Use HTTPS for the guidelines clone
 
 Request: “make sure the agents_guidelines repo is clones from https://github.com/nilsmkMET/agent_guidelines in the setup”.

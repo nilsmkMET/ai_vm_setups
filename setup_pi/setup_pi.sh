@@ -48,7 +48,7 @@ fi
 SKILLCOLLECTION_DIR="$HOME/git/skillcollection"
 if [ ! -d "$SKILLCOLLECTION_DIR" ]; then
     mkdir -p "$HOME/git"
-    git clone git@github.com:nilsmkMET/skillcollection.git "$SKILLCOLLECTION_DIR"
+    git clone https://github.com/nilsmkMET/skillcollection.git "$SKILLCOLLECTION_DIR"
 fi
 
 # Configure skillcollection in ~/.pi/agent/settings.json

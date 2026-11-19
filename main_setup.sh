@@ -151,6 +151,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 npm install -g @github/copilot
 mkdir -p "$HOME/.copilot"
+cd ./setup_copilot
+bash setup_copilot.sh
+cd "$REPO_DIR"
 history -s "copilot --yolo"
 npm install -g @anthropic-ai/claude-code
 history -s "claude --dangerously-skip-permissions"
